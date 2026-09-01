@@ -54,8 +54,10 @@ CUDA 11.7, and then run `pip install -r requirements.txt`.
 
 ### Datasets
 
-Download RefSegRS and RRSIS-D from their official project pages. This
-repository does not redistribute either dataset. Arrange them as follows:
+Download [RefSegRS](https://github.com/zhu-xlab/rrsis) and
+[RRSIS-D](https://github.com/Lsan2401/RMSIN) from their official project
+pages. This repository does not redistribute either dataset. Arrange them as
+follows:
 
 ```text
 datasets/
@@ -79,8 +81,11 @@ in every provided script.
 
 ### Initial Weights
 
-Download the BERT-base-uncased files to `bert-base-uncased/` and the Swin
-Transformer base checkpoint to:
+Download the BERT-base-uncased files from the
+[official BERT project](https://github.com/google-research/bert) to
+`bert-base-uncased/`. Download the Swin Transformer base checkpoint from the
+[official Swin Transformer project](https://github.com/microsoft/Swin-Transformer)
+and place it at:
 
 ```text
 pretrained_weights/swin_base_patch4_window12_384_22k.pth
@@ -115,9 +120,8 @@ GPU=1 SPLIT=val CHECKPOINT=/path/to/model.pth \
 
 ## Acknowledgements
 
-This code is built on RMSIN/LAVT. We thank the authors of RMSIN, LAVT, Swin
-Transformer, BERT, MMCV, and the RefSegRS and RRSIS-D datasets for making
-their work publicly available.
+This code is built on [RMSIN](https://github.com/Lsan2401/RMSIN). We thank
+the authors for making their work publicly available.
 
 ## Citation
 
