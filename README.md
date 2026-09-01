@@ -2,11 +2,11 @@
 
 Official implementation of **DLSA: Dual-Level Semantic Alignment with
 Adaptive Multi-Scale Modeling for Referring Remote Sensing Image
-Segmentation**, accepted to Findings of EMNLP 2026.
+Segmentation**, accepted to EMNLP 2026.
 
 ## News
 
-- **August 2026:** DLSA was accepted to Findings of EMNLP 2026.
+- **August 2026:** DLSA was accepted to EMNLP 2026.
 - Code and trained models are available in this repository.
 
 ## Models
@@ -90,11 +90,6 @@ The supplied DLSA checkpoints are sufficient for evaluation. To initialize
 training from a compatible segmentation checkpoint, set `INIT_CHECKPOINT`.
 
 ## Training and Inference
-
-The reference experiments use 480x480 inputs, batch size 2 per GPU, four
-GPUs, AdamW with weight decay 0.01, and polynomial learning-rate decay. Both
-datasets are trained for 20 epochs. The learning rates are `3e-5` for
-RefSegRS and `1e-5` for RRSIS-D.
 
 Train DLSA:
 
