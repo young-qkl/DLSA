@@ -1,0 +1,17 @@
+einops==0.6.1
+filelock==3.12.2
+h5py==3.7.0
+mmcv==2.1.0
+mmengine==0.10.6
+numpy==1.21.5
+opencv-python==4.5.3.56
+Pillow==9.0.1
+pycocotools==2.0.2
+regex==2024.4.16
+requests==2.31.0
+scikit-image==0.19.3
+scipy==1.7.3
+timm==0.9.12
+tokenizers==0.13.3
+tqdm==4.66.5
+transformers==4.30.2

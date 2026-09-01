@@ -1,0 +1,13 @@
+name: dlsa
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  - python=3.7.12
+  - pip=22.3.1
+  - pytorch=1.13.1
+  - torchvision=0.14.1
+  - cudatoolkit=11.7
+  - pip:
+      - -r requirements.txt
