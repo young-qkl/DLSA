@@ -63,6 +63,8 @@ def get_parser():
     parser.add_argument('--mono_channel_gate', action='store_true', help='average gate across channels at inference')
     parser.add_argument('--init_weights', default='', type=str,
                         help='warm-start checkpoint for LA-SgAMC finetuning')
+    parser.add_argument('--reset_text_decoder_on_init', action='store_true',
+                        help='keep the configured text-decoder initialization when loading base-model weights')
 
     parser.add_argument('--ft_stage', default='A', choices=['A', 'B', 'full'],
                         help='A: only new LA params + alpha_fc; B: all sgAMC + alpha_fc; full: keep original training scope')

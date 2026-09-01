@@ -251,7 +251,19 @@ def main(args):
 
     # resume training
     if checkpoint is not None:
-        single_model.load_state_dict(checkpoint['model'], strict=False)
+        model_state = checkpoint['model']
+        if args.init_weights and args.reset_text_decoder_on_init:
+            text_decoder_prefixes = tuple(
+                'classifier.{}.'.format(stage) for stage in ('tg4', 'tg3', 'tg2', 'tg1')
+            )
+            model_state = {
+                name: value for name, value in model_state.items()
+                if not name.startswith(text_decoder_prefixes)
+            }
+            print('Initialized DLSA from base weights while preserving the configured ALTI initialization.')
+        incompatible = single_model.load_state_dict(model_state, strict=False)
+        print('Checkpoint load: {} missing keys, {} unexpected keys.'.format(
+            len(incompatible.missing_keys), len(incompatible.unexpected_keys)))
         if args.model != 'lavt_one':
             single_bert_model.load_state_dict(checkpoint['bert_model'])
 

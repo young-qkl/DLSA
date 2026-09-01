@@ -91,16 +91,30 @@ and place it at:
 pretrained_weights/swin_base_patch4_window12_384_22k.pth
 ```
 
-The supplied DLSA checkpoints are sufficient for evaluation. To initialize
-training from a compatible segmentation checkpoint, set `INIT_CHECKPOINT`.
+The supplied DLSA checkpoints are sufficient for evaluation.
 
 ## Training and Inference
 
-Train DLSA:
+Run the complete two-stage training and evaluation pipeline. The first stage
+trains the RMSIN base model, and the second stage initializes from its best
+checkpoint and fine-tunes DLSA:
 
 ```bash
-bash scripts/train_refsegrs.sh
-bash scripts/train_rrsisd.sh
+bash scripts/run_refsegrs_pipeline.sh
+bash scripts/run_rrsisd_pipeline.sh
+```
+
+The base stage uses 60 epochs on RefSegRS and 40 epochs on RRSIS-D. The DLSA
+fine-tuning stage uses 15 and 10 epochs, respectively. To run only one stage,
+set `STAGE` to `base`, `dlsa`, or `test`.
+
+When a compatible RMSIN checkpoint is already available, skip base training:
+
+```bash
+STAGE=dlsa BASE_CHECKPOINT=/path/to/rmsin_refsegrs.pth \
+  bash scripts/run_refsegrs_pipeline.sh
+STAGE=dlsa BASE_CHECKPOINT=/path/to/rmsin_rrsisd.pth \
+  bash scripts/run_rrsisd_pipeline.sh
 ```
 
 Evaluate the released checkpoints:
